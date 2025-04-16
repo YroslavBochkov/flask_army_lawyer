@@ -4,6 +4,7 @@ import sys
 from flask import Flask, render_template
 from flask_frozen import Freezer
 from flask_flatpages import pygments_style_defs
+from collections.abc import Mapping
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
