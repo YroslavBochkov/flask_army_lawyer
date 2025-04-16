@@ -3,7 +3,6 @@ import json
 import sys
 from flask import Flask, render_template
 from flask_frozen import Freezer
-from collections.abc import Mapping
 from flask_flatpages import pygments_style_defs
 
 app = Flask(__name__)
