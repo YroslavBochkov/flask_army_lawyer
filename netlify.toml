@@ -1,0 +1,3 @@
+[build]
+  command = "python mysite.py build"
+  publish = "build"
