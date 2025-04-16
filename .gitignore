@@ -134,3 +134,4 @@ cython_debug/
 .DS_Store
 static/temp.txt
 static/images/thumbnails/*
+config.py
