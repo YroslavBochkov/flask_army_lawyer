@@ -1,3 +1,4 @@
 [build]
   command = "python mysite.py build"
+  command = "pip install --upgrade pip && python mysite.py build"
   publish = "build"
