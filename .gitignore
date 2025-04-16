@@ -132,4 +132,5 @@ dmypy.json
 cython_debug/
 
 .DS_Store
-static/*
+static/temp.txt
+static/images/thumbnails/*
