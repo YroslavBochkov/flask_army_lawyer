@@ -2,7 +2,7 @@ import os
 import json
 import sys
 from flask import Flask, render_template
-from collections.abc import Mapping
+from collections import Mapping
 from flask_frozen import Freezer
 from flask_flatpages import pygments_style_defs
 
