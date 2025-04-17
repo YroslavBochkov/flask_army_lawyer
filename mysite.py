@@ -18,11 +18,6 @@ def index():
     settings = _get_settings()
     return render_template('index.html', **settings)
 
-@app.route('/services/')
-def services():
-    settings = _get_settings()
-    return render_template('services.html', **settings)
-
 @app.route('/pygments.css')
 def pygments_css():
     return pygments_style_defs('monokai'), 200, {'Content-Type': 'text/css'}
