@@ -32,5 +32,8 @@
   <script src="{{ url_for('static', filename='assets/swiper/swiper-bundle.min.js') }}"></script>
   <script src="{{ url_for('static', filename='assets/waypoints/noframework.waypoints.js') }}"></script>
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% include "chatbot_widget.html" %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+  <script src="{{ url_for('static', filename='js/army_law_chatbot.js') }}"></script>
 </body>
 </html>

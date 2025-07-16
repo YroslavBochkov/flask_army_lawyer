@@ -1,7 +1,6 @@
-import os
 import json
 import sys
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from flask_frozen import Freezer
 from flask_flatpages import pygments_style_defs
 
@@ -9,18 +8,28 @@ app = Flask(__name__)
 app.config.from_pyfile('config.py')
 freezer = Freezer(app)
 
+
 def _get_settings():
     with open(app.config['SETTINGS_FILE'], encoding='utf8') as config_file:
         return json.load(config_file)
+
 
 @app.route("/")
 def index():
     settings = _get_settings()
     return render_template('index.html', **settings)
 
+
 @app.route('/pygments.css')
 def pygments_css():
     return pygments_style_defs('monokai'), 200, {'Content-Type': 'text/css'}
+
+
+@app.route('/chatbot_scenario')
+def chatbot_scenario():
+    with open('static/data/chatbot_texts.json', encoding='utf8') as f:
+        data = json.load(f)
+    return jsonify(data)
 
 
 @app.errorhandler(404)
