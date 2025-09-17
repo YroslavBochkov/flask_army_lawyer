@@ -32,6 +32,11 @@ def chatbot_scenario():
     return jsonify(data)
 
 
+@app.route('/yandex_bfabf8125b1b6900.html')
+def yandex_verification():
+    return render_template('yandex_bfabf8125b1b6900.html')
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
