@@ -7,7 +7,22 @@
   <meta content="{{ description }}" name="description">
   <meta content="{{ keywords }}" name="keywords">
   <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ site_url }}">
+
+  <!-- Open Graph для соцсетей -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ site_title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="{{ site_url }}">
+  <meta property="og:image" content="{{ url_for('static', filename='img/og_image.jpg', _external=True) }}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ site_title }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:image" content="{{ url_for('static', filename='img/og_image.jpg', _external=True) }}">
   <link href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ url_for('static', filename='assets/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
   <link href="{{ url_for('static', filename='assets/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
@@ -18,6 +33,26 @@
   <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('pygments_css') }}">
   {% include "yandex_metrika.html" %}
+
+  {# --- JSON-LD для хлебных крошек (BreadcrumbList) --- #}
+  {% if breadcrumbs %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {% for crumb in breadcrumbs %}
+      {
+        "@type": "ListItem",
+        "position": {{ loop.index }},
+        "name": "{{ crumb.name }}",
+        "item": "{{ crumb.url }}"
+      }{{ "," if not loop.last else "" }}
+      {% endfor %}
+    ]
+  }
+  </script>
+  {% endif %}
 </head>
 <body>
   <main id="main">
